@@ -35,7 +35,6 @@ class AlarmClock {
             console.log(time);
             if (alarm.time === timeNow){
                 alarm.callback();
-                return;
             }
         }   
         if (this.timerId === null) {
