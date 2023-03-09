@@ -34,10 +34,14 @@ class AlarmClock {
             let timeNow = this.getCurrentFormattedTime();
             console.log(time);
             if (alarm.time === timeNow){
-                alarm.callback;
+                alarm.callback();
                 return;
             }
-        };        
+        }   
+        if (this.timerId === null) {
+            this.timerId = setInterval(() => this.alarmCollection.forEach(alarm => checkClock(alarm)), 1000);
+            console.log(this.timerId);
+        }        
     }
 
     stop () {
@@ -52,7 +56,7 @@ class AlarmClock {
     }
 
     clearAlarms () {
-        this.stop;
+        this.stop();
         this.alarmCollection = [];
     }
 }
